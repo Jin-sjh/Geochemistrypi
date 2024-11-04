@@ -133,6 +133,9 @@ def cli_pipeline(training_data_path: str, application_data_path: Optional[str] =
         print("Please select only one file that you want to process:")
         # Limit the user input to a number within the range of available files and assign the result to training_data_path
         training_data_path = training_data_path[limit_num_input(range(1, len(training_data_path) + 1), SECTION[0], num_input) - 1]
+    elif len(training_data_path) == 1:
+        training_data_path = training_data_path[0]
+        print("The file that you want to process: {}".format(training_data_path))
 
     if training_data_path:
         # If the user provides file name, then load the training data from the file.
