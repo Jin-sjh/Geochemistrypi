@@ -17,12 +17,12 @@ if %errorlevel% neq 0 (
     echo ActivatePATH is !ActivatePATH!
 )
 
-goto :NEXT
 
 rem  检查环境是否已经存在
 call conda info --envs | findstr /C:"%ENVIRONMENTNAME%"  >nul
 if %errorlevel% equ 0 (
     echo Environment %ENVIRONMENTNAME% already exists.
+    call conda activate %ENVIRONMENTNAME%
     goto :eof
 ) else (
     echo Environment %ENVIRONMENTNAME% does not exist. Creating...
